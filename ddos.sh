@@ -141,11 +141,9 @@ if [ $KILL -eq 1 ]; then
 	done < $BAD_IP_LIST
 	if [ $IP_BAN_NOW -eq 1 ]; then
 		dt=`date`
+		eval $AFTER_BAN
 		if [ $EMAIL_TO != "" ]; then
 			cat $BANNED_IP_MAIL | mail -s "IP addresses banned on $dt" $EMAIL_TO
-		fi
-		if [ $AFTER_BAN != "" ]; then
-			eval $AFTER_BAN
 		fi
 		unbanip
 	fi
