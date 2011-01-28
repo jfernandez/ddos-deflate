@@ -144,9 +144,9 @@ if [ $KILL -eq 1 ]; then
 		if [ $EMAIL_TO != "" ]; then
 			cat $BANNED_IP_MAIL | mail -s "IP addresses banned on $dt" $EMAIL_TO
 		fi
-    if [ $AFTER_BAN != "" ]; then
-      $AFTER_BAN
-    fi
+		if [ $AFTER_BAN != "" ]; then
+			eval $AFTER_BAN
+		fi
 		unbanip
 	fi
 fi
