@@ -1,0 +1,19 @@
+1. Download the (D)DoS Deflate installer:
+
+wget https://github.com/jfernandez/ddos-deflate/raw/master/install.sh
+
+2. Give execute permission to the script:
+
+chmod 0700 install.sh
+
+3. Install it:
+
+./install.sh
+
+4. Add your IP address to the whitelist:
+
+vim /usr/local/ddos/ignore.ip.list
+
+5. Configure (D)DoS Deflate:
+
+vim /usr/local/ddos/ddos.conf
