@@ -115,7 +115,8 @@ echo "Banned the following ip addresses on `date`" > $BANNED_IP_MAIL
 echo >>	$BANNED_IP_MAIL
 BAD_IP_LIST=`$TMP_FILE`
 # Modified netstat command taken from: http://blog.everymanhosting.com/webhosting/dos-deflate-blocks-numbers-not-ip-addresses/
-netstat -ntu | grep ':' | awk '{print $5}' | sed 's/::ffff://' | cut -f1 -d ':' | sort | uniq -c | sort -nr > $BAD_IP_LIST
+# Only check for ESTABLISHED status connections
+netstat -ntu | grep ESTAB | grep ':' | awk '{print $5}' | sed 's/::ffff://' | cut -f1 -d ':' | sort | uniq -c | sort -nr > $BAD_IP_LIST
 cat $BAD_IP_LIST
 if [ $KILL -eq 1 ]; then
 	IP_BAN_NOW=0
